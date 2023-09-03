@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Text Summarization</h2>
+
+<div>
+
+    <form method="post" action="/predict">
+        <textarea name="input_text" style="width: 1200;height: 300;"></textarea>
+        <button type="submit" id="submit_button">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}

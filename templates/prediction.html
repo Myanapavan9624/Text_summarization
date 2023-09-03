@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VNRVJIET</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">      
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">VNRVJIET</a>
+            <a href="/"><button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Home</button></a>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="content" style="margin-top:2em">
+            <form method="post" action="/grading">
+                {% if disabled %}
+                    <button type="submit" id="grade_button" disabled>Grade this essay</button>
+                    <h3 style="color: rgb(255, 0, 0);"><b>Enter minimum 300 words to Grade this essay</b></h3>
+                {% else %}
+                    <button type="submit" id="grade_button" style="background-color:rgb(0, 204, 255);color: rgb(11, 11, 75);border-radius: 10px;">Grade this essay</button>
+                {% endif %}
+                <h3 style="margin: 20px;">Original Text</h3>
+                {% if original_text %}
+                    <textarea name="input_text" style="width: 1200;height: 300;" readonly>{{original_text}}</textarea>
+                {% else %}
+                    <p>No text Available..!!</p>
+                {% endif %}
+                <h3 style="margin: 20px;">Summarized Text</h3>
+                {% if summarized_text %}
+                    <p>{{summarized_text}}</p>
+                {% else %}
+                    <p>No Summary Available..!!</p>
+                {% endif %}
+        </form>
+        </div>
+    </div>
+</body>
+
+</html>
